@@ -7,6 +7,13 @@ export function Container({ fluid, children }) {
   return <div className={`container${fluid ? "-fluid" : ""}`} style={{marginTop: "2rem"}}>{children}</div>;
 }
 
+export function InnerContainer({ fluid, children }) {
+  return <div className={`container${fluid ? "-fluid bg-dark" : ""}`} style={{marginTop: "2rem"}}>{children}</div>;
+}
+export function BookContainer({ fluid, children }) {
+  return <div className={`container${fluid ? "-fluid" : ""}`} style={{marginTop: "2rem", display: "inline-block"}}>{children}</div>;
+}
+
 // This Row component lets us use a bootstrap row without having to think about class names
 export function Row({ fluid, children }) {
   return <div className={`row${fluid ? "-fluid" : ""}`}>{children}</div>;

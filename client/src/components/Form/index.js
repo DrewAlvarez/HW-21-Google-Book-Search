@@ -1,18 +1,18 @@
 import React from "react";
 
-// This file exports the Input, TextArea, and FormBtn components
-
 export function Input(props) {
   return (
-    <div className="form-group">
-      <input className="form-control" {...props} />
+    <div className="form-group" style={{display: "block", padding:"1rem 25% 0 25%"}}>
+      <div>
+        <input className="form-control" {...props} />
+      </div>
     </div>
   );
 }
 
 export function FormBtn(props) {
   return (
-    <button {...props} style={{ float: "right", display: "block", marginBottom: 10 }} className="btn btn-success">
+    <button className="bg-dark"{...props} style={{float: "right", display: "inline-block", marginBottom: "1rem", marginRight: "25%" }} className="btn btn-seconday">
       {props.children}
     </button>
   );

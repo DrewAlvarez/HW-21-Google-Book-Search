@@ -2,16 +2,14 @@ import React, { useState} from "react";
 import SearchedCard from "../components/SearchedCard"
 import API from "../utils/API";
 import { Link } from "react-router-dom";
-import { Container } from "../components/Grid";
+import { Container, InnerContainer, BookContainer } from "../components/Grid";
 import { List} from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 
 function Books() {
-  // Setting our component's initial state
   const [books, setBooks] = useState([])
   const [formObject, setFormObject] = useState({})
 
-  // Handles updating component state when the user types into the input field
   function handleInputChange(event) {
     const { name, value } = event.target;
     setFormObject({...formObject, [name]: value})
@@ -37,20 +35,26 @@ function Books() {
 
     return (
       <Container fluid>
-            <form style={{marginBottom: "3rem"}}>
-              <Input
-                onChange={handleInputChange}
-                name="title"
-                placeholder="Title (required)"
+        <div className="bg-dark text-white">
+          <div style={{textAlign: "center", paddingTop: "1rem"}}>
+            <h3>Enter the Title You Wish to Search</h3>
+            <p>Search Brings Up 10 Results</p>
+          </div>
+          <form style={{overflow: "hidden", marginBottom: "2rem"}}>
+            <Input
+              onChange={handleInputChange}
+              name="title"
+              placeholder="Title (required)"
               />
-              <FormBtn
-                disabled={!(formObject.title)}
-                onClick={handleSearch}
+            <FormBtn
+              disabled={!(formObject.title)}
+              onClick={handleSearch}
               >
-                Search Books
-              </FormBtn>
-            </form>
-            <br />
+              Search Books
+            </FormBtn>
+          </form>
+        </div>
+        <div style={{display: "inline-block"}}>
             {books.length ? (
               <List>
                 {books.map(book => (
@@ -69,6 +73,7 @@ function Books() {
             ) : (
               <h3>No Results to Display</h3>
             )}
+        </div>
       </Container>
     );
   }
